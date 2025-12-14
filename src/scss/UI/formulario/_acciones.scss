@@ -1,0 +1,28 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.acciones {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+
+    &__enlace {
+        font-size: 1.4rem;
+        color: v.$cafe-oscuro;
+        text-decoration: none;
+        transition: color .3s;
+
+        &:hover {
+            color: c.adjust(v.$cafe-oscuro, $lightness: -10%);
+        }
+
+        &--boton {
+            @include m.boton(v.$blanco, v.$cafe-oscuro);
+            padding: 1rem 2rem;
+            font-size: 1.6rem;
+        }
+    }
+}

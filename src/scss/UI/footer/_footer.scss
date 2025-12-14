@@ -1,0 +1,76 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.footer {
+    background-color: v.$cafe-oscuro;
+    color: v.$blanco;
+    padding-top: 4rem;
+
+    &__contenedor {
+        @include m.contenedor;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__texto {
+        font-size: 1.8rem;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    &__redes {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    &__enlace {
+        color: v.$blanco;
+        text-decoration: none;
+        font-weight: v.$bold;
+        transition: color .3s;
+
+        &:hover {
+            color: c.adjust(v.$blanco, $lightness: -20%);
+        }
+    }
+
+    &__informacion {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    &__ubicacion {
+        margin-top: 0.5rem;
+    }
+
+    &__direccion {
+        margin-top: 0.5rem;
+    }
+
+    &__horario {
+        margin-top: 0.5rem;
+    }
+
+    &__desarrollo {
+        margin-top: 1rem;
+        padding: 1rem 0;
+        font-size: 1.5rem;
+        text-align: center;
+        color: c.adjust(v.$blanco, $lightness: -30%);
+        background-color: v.$cafe-medio;
+
+        &--matias {
+            color: c.adjust(v.$blanco, $lightness: -30%);
+            text-decoration: none;
+            font-weight: v.$bold;
+
+            &:hover {
+                color: c.adjust(v.$blanco, $lightness: -50%);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,45 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+
+.navegacion {
+    display: none; // mobile-first: ocultar en móvil
+
+    &__link {
+        color: v.$blanco;
+        margin-left: 2rem;
+        text-decoration: none;
+        font-weight: v.$bold;
+        font-size: 1.8rem;
+        transition: color .18s ease, transform .18s ease;
+
+        &--boton {
+            background: none;
+            border: none;
+            padding: 0;
+            color: v.$blanco;
+            font-weight: v.$bold;
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                color: v.$cafe-muy-claro;
+                transform: translateY(-2px);
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        
+        &:hover,
+        &:focus {
+            @extend .navegacion__link--boton;
+        }
+
+    }
+
+    @include m.desktop {
+        display: flex;
+        align-items: center;
+    }
+}

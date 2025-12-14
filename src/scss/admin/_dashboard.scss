@@ -1,0 +1,81 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.dashboard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$gris-claro;
+
+    &__header {
+        background-color: v.$admin-primario;
+        padding: 2rem;
+    }
+
+    &__header-grid {
+        display: flex;
+        flex-direction: column;
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__logo {
+        @include m.logo();
+        @include m.texto-fluido(2rem, 3rem);
+        display: flex;
+        align-items: center;
+
+        &--admin {
+            font-size: 1.6rem;
+            font-weight: v.$regular;
+            margin-left: 1rem;
+            color: v.$gris-claro;
+        }
+    }
+
+    &__grid {
+        display: flex;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    &__submit--logout {
+        @include m.enlace();
+    }
+
+    &__contenido {
+        @include m.contenedor();
+        flex: 1;
+    }
+
+    &__contenedor-boton {
+        @include m.contenedor();
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 2rem;
+        gap: 1rem;
+
+
+        &--enlace {
+            all: unset;
+            background-color: v.$admin-secundario;
+            padding: 1rem 2rem;
+            border-radius: 1.5rem;
+            color: v.$blanco;
+            font-weight: v.$bold;
+            transition: all .5s ease;
+            cursor: pointer;
+
+            &:hover {
+                background-color: c.adjust(v.$admin-secundario, $lightness: -10%);
+                color: v.$blanco;
+                @include m.shadow();
+            }
+        }
+    }
+    
+}

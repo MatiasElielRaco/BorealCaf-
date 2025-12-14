@@ -1,0 +1,28 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.sidebar {
+	background-color: v.$admin-primario;
+
+	&__menu {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__enlace {
+		@include m.enlace();
+		padding: 2rem 4rem;
+		transition: all .5s ease;
+
+		&:hover {
+			background-color: v.$gris-claro;
+			color: v.$admin-primario;
+		}
+
+		&--activo {
+			background-color: v.$gris-claro;
+			color: v.$admin-primario;
+		}
+	}
+}

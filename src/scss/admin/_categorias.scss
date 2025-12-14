@@ -1,0 +1,71 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.categorias {
+    @include m.contenedor();
+    margin-top: 4rem;
+
+    &__grid {
+        @include m.grid(2, 1fr);
+        gap: 1.5rem;
+        @include m.tablet {
+            @include m.grid(3, 1fr);
+            gap: 2rem;
+        }
+        @include m.desktop {
+            @include m.grid(4, 1fr);
+            gap: 2rem;
+        }
+    }
+
+    &__categoria {
+        background-color: v.$blanco;
+        border: 1px solid v.$gris-medio;
+        border-radius: v.$radio;
+        padding: 1rem;
+        box-shadow: v.$sombra;
+    }
+
+    &__titulo {
+        @include m.texto-fluido(1.5rem, 2.5rem);
+        font-weight: v.$bold;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__acciones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        gap: 1rem;
+
+        &--eliminar {
+            all: unset;
+            color: v.$error;
+            font-weight: v.$bold;
+            transition: color .3s ease;
+            @include m.texto-fluido(1.2rem, 2rem);
+            cursor: pointer;
+
+            &:hover {
+                color: c.scale(v.$error, $lightness: -20%);
+            }
+        }
+
+        &--editar {
+            all: unset;
+            color: v.$admin-secundario;
+            font-weight: v.$bold;
+            transition: color .3s ease;
+            @include m.texto-fluido(1.2rem, 2rem);
+            cursor: pointer;
+
+            &:hover {
+                color: c.scale(v.$admin-secundario, $lightness: -20%);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,42 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.header {
+	// Fondo con la paleta de la marca
+	@include m.bg-gradient(v.$cafe-medio);
+	color: v.$blanco;
+	padding: 3rem 0 2rem;
+
+    &__contenedor {
+        @include m.contenedor;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5rem;
+    }
+
+	&__logo-nombre {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1.6rem;
+	}
+
+	&__logo {
+		width: 8rem;
+		height: auto;
+		display: block;
+	}
+
+	&__titulo {
+		font-family: v.$fuente-principal;
+		font-weight: v.$black;
+		font-size: 4rem;
+		margin-left: .6rem;
+		color: v.$blanco;
+		letter-spacing: .02em;
+	}
+}
+
+
+

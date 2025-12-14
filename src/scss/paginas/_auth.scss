@@ -1,0 +1,26 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.auth {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+
+    &__heading {
+        font-weight: v.$black;
+        font-size: 3.2rem;
+        color: v.$cafe-oscuro;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    &__texto {
+        font-size: 1.6rem;
+        color: v.$gris-oscuro;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    
+}

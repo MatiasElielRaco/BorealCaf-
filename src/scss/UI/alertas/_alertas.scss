@@ -1,0 +1,24 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+.alerta {
+    max-width: 60rem;
+    margin: 0 auto 2rem;
+    padding: 1rem 2rem;
+    border-radius: v.$radio;
+    font-size: 1.6rem;
+    font-weight: v.$bold;
+
+    &__error {
+        background-color: c.adjust(v.$error, $lightness: 30%);
+        color: c.adjust(v.$error, $lightness: -20%);
+        border-left: 6px solid v.$error;
+    }
+
+    &__exito {
+        background-color: c.adjust(v.$exito, $lightness: 40%);
+        color: c.adjust(v.$exito, $lightness: -20%);
+        border-left: 6px solid v.$exito;
+    }
+}
