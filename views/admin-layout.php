@@ -19,6 +19,9 @@
             include_once __DIR__ .'/templates/admin-sidebar.php';  
         ?>
 
+        <!-- Backdrop para overlay del sidebar en mobile -->
+        <div class="sidebar__backdrop" aria-hidden="true"></div>
+
         <main class="dashboard__contenido">
             <?php 
                 echo $contenido; 
@@ -26,6 +29,6 @@
         </main>
     </div>
 
-    <script src="/build/js/app.min.js" defer></script>
+    <script src="/build/js/main.min.js" defer></script>
 </body>
 </html>

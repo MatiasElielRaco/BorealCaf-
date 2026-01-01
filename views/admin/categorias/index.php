@@ -11,11 +11,11 @@
             <article class="categorias__categoria">
                 <h4 class="categorias__titulo"><?php echo $categoria->nombre; ?></h4>
                 <div class="categorias__acciones">
-                    <form action="/admin/categorias/eliminar" method="POST" class="categorias__acciones--boton">
+                    <div class="categorias__acciones--boton">
                         <input type="hidden" name="id" value="<?php echo $categoria->id; ?>">
-                        <input type="submit" class="categorias__acciones--eliminar" value="&times; Eliminar">
-                    </form>
-                    <a href="/admin/categorias/editar?id=<?php echo $categoria->id; ?>" class="categorias__acciones--editar">Editar</a>
+                        <button type="submit" class="categorias__acciones--eliminar">&times; Eliminar</button>
+                    </div>
+                    <a href="/admin/categorias/editar?id=<?php echo $categoria->id; ?>" class="categorias__acciones--editar"> Editar</a>
                 </div>
             </article>
         <?php endforeach; ?>

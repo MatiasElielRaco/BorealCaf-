@@ -9,6 +9,7 @@
     border-radius: v.$radio;
     box-shadow: v.$sombra;
     max-width: 100%;
+    margin-bottom: 8rem;
 
     &__campo {
         margin-bottom: 2rem;
@@ -35,6 +36,15 @@
             border-color: v.$cafe-oscuro;
             outline: none;
         }
+        
+    }
+    &__textarea {
+        field-sizing: content;
+    }
+
+    &__imagen {
+        max-width: 300px;
+        margin-top: 1rem;
     }
 
     &__submit {

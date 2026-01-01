@@ -45,6 +45,9 @@ $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 $router->get('/admin/productos', [ProductosController::class, 'index']);    
 $router->get('/admin/productos/crear', [ProductosController::class, 'crear']);    
 $router->post('/admin/productos/crear', [ProductosController::class, 'crear']);    
+$router->get('/admin/productos/editar', [ProductosController::class, 'editar']);    
+$router->post('/admin/productos/editar', [ProductosController::class, 'editar']);    
+$router->post('/admin/productos/eliminar', [ProductosController::class, 'eliminar']);    
 
 // Páginas de Pedidos
 $router->get('/admin/pedidos', [PedidosController::class, 'index']);
@@ -53,6 +56,9 @@ $router->get('/admin/pedidos', [PedidosController::class, 'index']);
 $router->get('/admin/categorias', [CategoriasController::class, 'index']);
 $router->get('/admin/categorias/crear', [CategoriasController::class, 'crear']);
 $router->post('/admin/categorias/crear', [CategoriasController::class, 'crear']);
+$router->get('/admin/categorias/editar', [CategoriasController::class, 'editar']);
+$router->post('/admin/categorias/editar', [CategoriasController::class, 'editar']);
+$router->post('/admin/categorias/eliminar', [CategoriasController::class, 'eliminar']);
 
 // Páginas de Reportes
 $router->get('/admin/reportes', [ReportesController::class, 'index']);

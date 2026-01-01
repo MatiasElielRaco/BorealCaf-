@@ -3,26 +3,49 @@
 @use 'sass:color' as c;
 
 .dashboard {
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: v.$gris-claro;
 
     &__header {
         background-color: v.$admin-primario;
-        padding: 2rem;
+        padding: 1.2rem 1.5rem;
     }
 
     &__header-grid {
         display: flex;
         flex-direction: column;
+        gap: 0.8rem;
+
         @include m.tablet {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            gap: 0;
         }
     }
 
+    &__logo--admin {
+        display: block;
+        font-size: 1rem;
+        font-weight: v.$regular;
+    }
+
+    @media (max-width: v.$tablet) {
+        .dashboard__header {
+            padding: .9rem 1rem;
+        }
+
+        .dashboard__logo {
+            @include m.texto-fluido(1.4rem, 3rem);
+        }
+
+        /* Ajustes: mostrar botón y alinear elementos */
+        .dashboard__header-grid {
+            align-items: center;
+        }
+    }
     &__logo {
         @include m.logo();
         @include m.texto-fluido(2rem, 3rem);
@@ -40,11 +63,33 @@
     &__grid {
         display: flex;
         flex: 1;
-        overflow-y: auto;
     }
 
     &__submit--logout {
         @include m.enlace();
+    }
+
+    /* Botón para abrir el sidebar en mobile */
+    .dashboard__menu-btn {
+        all: unset;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.2rem;
+        height: 4.2rem;
+        border-radius: .8rem;
+        background: transparent;
+        cursor: pointer;
+        margin-left: 1rem;
+    }
+
+    /* Evitar scroll cuando el sidebar está abierto */
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+    @include m.tablet {
+        .dashboard__menu-btn { display: none; }
     }
 
     &__contenido {
@@ -52,30 +97,5 @@
         flex: 1;
     }
 
-    &__contenedor-boton {
-        @include m.contenedor();
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 2rem;
-        gap: 1rem;
-
-
-        &--enlace {
-            all: unset;
-            background-color: v.$admin-secundario;
-            padding: 1rem 2rem;
-            border-radius: 1.5rem;
-            color: v.$blanco;
-            font-weight: v.$bold;
-            transition: all .5s ease;
-            cursor: pointer;
-
-            &:hover {
-                background-color: c.adjust(v.$admin-secundario, $lightness: -10%);
-                color: v.$blanco;
-                @include m.shadow();
-            }
-        }
-    }
     
 }

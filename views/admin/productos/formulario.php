@@ -15,7 +15,7 @@
     <textarea 
         id="descripcion" 
         name="descripcion" 
-        class="formulario__input formulario__input--textarea" 
+        class="formulario__input formulario__textarea" 
         placeholder="Descripción del Producto"
     ><?php echo s($producto->descripcion); ?></textarea>
 </div>
@@ -58,7 +58,6 @@
         id="imagen" 
         name="imagen" 
         class="formulario__input" 
-        accept="image/jpeg, image/png"
     />
 </div>
 

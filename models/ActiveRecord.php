@@ -137,6 +137,13 @@ class ActiveRecord {
         return  $resultado;
     }
 
+    // Paginar con condición WHERE personalizada (cadena raw)
+    public static function paginarWhereRaw($por_pagina, $offset, $where) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$where} ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset}" ;
+        $resultado = self::consultarSQL($query);
+        return  $resultado;
+    }
+
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";

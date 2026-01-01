@@ -4,10 +4,36 @@
 
 .sidebar {
 	background-color: v.$admin-primario;
+	/* Allow the sidebar to stretch vertically with the grid/page */
+	align-self: stretch;
+	min-height: 100%;
+	transition: transform .25s ease;
 
 	&__menu {
 		display: flex;
 		flex-direction: column;
+	}
+
+	/* Logout dentro del sidebar */
+	.sidebar__logout {
+		margin: 2rem 1.5rem;
+	}
+
+	.sidebar__logout--btn {
+		all: unset;
+		display: inline-block;
+		width: 100%;
+		padding: 0.9rem 1rem;
+		border-radius: 0.8rem;
+		color: v.$blanco;
+		font-weight: v.$bold;
+		text-align: center;
+		cursor: pointer;
+		transition: background-color .15s ease;
+	}
+
+	.sidebar__logout--btn:hover {
+		background-color: c.adjust(v.$admin-alerta, $lightness: -10%);
 	}
 
 	&__enlace {
@@ -25,4 +51,44 @@
 			color: v.$admin-primario;
 		}
 	}
+
+	// Off-canvas behavior for mobile
+	@media (max-width: v.$tablet) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 80vw;
+		max-width: 320px;
+		transform: translateX(-110%); // hidden by default
+		display: block;
+		z-index: 60;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+	}
+
+	&.sidebar--open {
+		@media (max-width: v.$tablet) {
+			transform: translateX(0);
+		}
+	}
+
+}
+
+// Backdrop overlay
+.sidebar__backdrop {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.45);
+	z-index: 50;
+	opacity: 0;
+	transition: opacity .2s ease;
+}
+
+.sidebar__backdrop.sidebar__backdrop--visible {
+	display: block;
+	opacity: 1;
 }

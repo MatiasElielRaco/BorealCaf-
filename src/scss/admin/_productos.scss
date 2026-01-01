@@ -1,0 +1,167 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+
+.productos {
+  padding: 2rem;
+  background-color: v.$gris-claro;
+
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: v.$fuente-principal;
+  box-shadow: v.$sombra;
+  border-radius: v.$radio;
+  overflow: hidden;
+
+
+  th, td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid v.$gris-medio;
+  }
+
+  th {
+    background-color: v.$cafe-oscuro;
+    color: v.$blanco;
+    font-weight: v.$bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: c.adjust(v.$gris-claro, $lightness: -5%);
+  }
+
+  &__acciones {
+
+    &--inner {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+  }
+
+  &__accion {
+    all: unset;
+    padding: 1rem;
+    border-radius: v.$radio;
+    cursor: pointer;
+    text-align: center;
+
+    &--editar {
+      background-color: v.$advertencia;
+      color: v.$blanco;
+
+      &:hover {
+        background-color: c.adjust(v.$advertencia, $lightness: -10%);
+      }
+    }
+
+    &--eliminar {
+      background-color: v.$admin-alerta;
+      color: v.$blanco;
+
+      &:hover {
+        background-color: c.adjust(v.$admin-alerta, $lightness: -10%);
+      }
+    }
+  }
+}
+
+/* Mobile: version for .tabla below tablet breakpoint */
+@media (max-width: calc(v.$tablet - 1px)) {
+  .tabla {
+    width: 100%;
+    display: block;
+    font-family: v.$fuente-principal;
+    margin: 0 1rem;
+
+    thead { display: none; }
+    tbody { display: block; }
+
+    tr.tabla__tr {
+      display: block;
+      margin-bottom: 1rem;
+      background: v.$blanco;
+      border-radius: v.$radio;
+      box-shadow: v.$sombra;
+      overflow: hidden;
+    }
+
+    td.tabla__td {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid c.adjust(v.$gris-claro, $lightness: -6%);
+    }
+
+    /* label encima */
+    td.tabla__td::before {
+      content: attr(data-label);
+      display: block;
+      font-weight: v.$bold;
+      color: v.$gris-medio;
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    /* acciones en la parte inferior de la tarjeta */
+    td.tabla__td.tabla__acciones, td.tabla__td[data-label="Acciones"] {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.6rem 1rem;
+    }
+
+    .tabla__acciones--inner {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .tabla__accion {
+      padding: 0.6rem 0.8rem;
+      font-size: 1.8rem;
+    }
+
+    /* evitar overflow en textos largos */
+    td.tabla__td > * { max-width: 100%; word-wrap: break-word; }
+
+    /* very small devices */
+    @media (max-width: calc(v.$telefono)) {
+      td.tabla__td { padding: 0.75rem 0.9rem; }
+      td.tabla__td::before { font-size: 1rem; }
+      .tabla__acciones--inner { justify-content: flex-start; gap: 0.4rem; }
+    }
+  }
+}
+
+.paginacion {
+  margin-top: 2rem;
+  text-align: center;
+
+  &__enlace{
+    all: unset;
+    margin: 0 0.3rem;
+    color: v.$cafe-oscuro;
+    font-weight: v.$regular;
+    &:hover {
+      cursor: pointer;
+    }
+      
+    &--actual{
+      font-weight: v.$bold;
+      text-decoration: underline;
+    }
+
+    &--numero {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

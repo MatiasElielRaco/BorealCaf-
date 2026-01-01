@@ -1,0 +1,110 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color' as c;
+
+
+.filtros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 2rem;
+
+    &__group {
+        width: 100%;
+
+        label {
+            font-size: 1.5rem;
+            color: v.$gris-oscuro;
+        }
+
+        input, select {
+            padding: 1rem 1.5rem;
+            border: 1px solid v.$gris-medio;
+            border-radius: v.$radio;
+            background: v.$blanco;
+            color: v.$gris-oscuro;
+            font-size: 1.7rem;
+            width: 100%;
+        }
+    }
+
+    &__botones {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    
+        &--boton {
+            all: unset;
+            background-color: v.$admin-secundario;
+            padding: 1rem 2rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            color: v.$blanco;
+            font-weight: v.$bold;
+            transition: all .5s ease;
+            cursor: pointer;
+
+            &:hover {
+                background-color: c.adjust(v.$admin-secundario, $lightness: -10%);
+                color: v.$blanco;
+                @include m.shadow();
+            }
+        }
+    }
+}
+    
+
+@include m.desktop {
+    .filtros {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 2rem;
+        margin: 1rem 2rem;
+    
+        &__group {
+            width: auto;
+            label {
+                font-size: 1.5rem;
+                color: v.$gris-oscuro;
+            }
+    
+            input, select {
+                padding: 1rem 1.5rem;
+                border: 1px solid v.$gris-medio;
+                border-radius: v.$radio;
+                background: v.$blanco;
+                color: v.$gris-oscuro;
+                font-size: 1.7rem;
+                width: 100%;
+            }
+        }
+    
+        &__botones {
+        @include m.contenedor();
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    
+            &--boton {
+                all: unset;
+                background-color: v.$admin-secundario;
+                padding: 1rem 2rem;
+                border-radius: 1.5rem;
+                color: v.$blanco;
+                font-weight: v.$bold;
+                transition: all .5s ease;
+                cursor: pointer;
+    
+                &:hover {
+                    background-color: c.adjust(v.$admin-secundario, $lightness: -10%);
+                    color: v.$blanco;
+                    @include m.shadow();
+                }
+            }
+        }
+    }
+}
+

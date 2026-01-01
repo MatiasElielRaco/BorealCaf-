@@ -7,7 +7,7 @@
     margin-top: 4rem;
 
     &__grid {
-        @include m.grid(2, 1fr);
+        @include m.grid(1, 1fr);
         gap: 1.5rem;
         @include m.tablet {
             @include m.grid(3, 1fr);

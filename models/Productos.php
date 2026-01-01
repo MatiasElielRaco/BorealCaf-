@@ -4,7 +4,7 @@ namespace Model;
 
 class Productos extends ActiveRecord {
     protected static $tabla = 'productos';
-    protected static $columnasDB = ['id', 'nombre', 'descripcion', 'categoria_id', 'precio', "imagen", 'dispnible'];
+    protected static $columnasDB = ['id', 'nombre', 'descripcion', 'categoria_id', 'precio', "imagen", 'disponible'];
 
     public $id;
     public $nombre;
@@ -23,7 +23,7 @@ class Productos extends ActiveRecord {
         $this->categoria_id = $args['categoria_id'] ?? "";
         $this->precio = $args['precio'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
-        $this->disponible = $args['disponible'] ?? 1;
+        $this->disponible = $args['disponible'] ?? "";
     }
 
     // Validar Productos
@@ -43,7 +43,7 @@ class Productos extends ActiveRecord {
         if(!$this->imagen) {
             self::$alertas['error'][] = 'Coloca una Imágen Válida';
         }
-        if(!$this->disponible) {
+        if($this->disponible === "") {
             self::$alertas['error'][] = 'Coloca una Disponibilidad Válida';
         }
         return self::$alertas;
